@@ -62,7 +62,9 @@ public void displayWinningMessage()
 }
 public boolean isValid(int r, int c)
 {
-    //your code here
+    if(r < NUM_ROWS && r >= 0 && c < NUM_COLS && c >= 0){
+        return false;
+    }
     return false;
 }
 public int countMines(int row, int col)
@@ -96,13 +98,26 @@ public class MSButton
     {
         clicked = true;
         //your code here
+        //if(clicked == false)
+         if(isValid(myRow,myCol-1) && buttons[myRow+1][myCol].clicked)
+            buttons[myRow][myCol-1].mousePressed();
+            
+          if(isValid(myRow,myCol+1) && !buttons[myRow+1][myCol].clicked)
+            buttons[myRow][myCol+1].mousePressed();
+            
+          if(isValid(myRow-1,myCol) && !buttons[myRow+1][myCol].clicked)
+            buttons[myRow-1][myCol].mousePressed();
+            
+          if(isValid(myRow+1,myCol) && !buttons[myRow+1][myCol].clicked)
+            buttons[myRow+1][myCol].mousePressed();
+        
     }
     public void draw () 
     {    
         if (flagged)
             fill(0);
-        // else if( clicked && mines.contains(this) ) 
-        //     fill(255,0,0);
+        else if( clicked && mines.contains(this) ) 
+             fill(255,0,0);
         else if(clicked)
             fill( 200 );
         else 
