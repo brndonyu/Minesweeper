@@ -70,15 +70,26 @@ public void displayLosingMessage()
 {
     //your code here
     fill(0);
-    text("You lose!",200,200);
-    noLoop();
+    buttons[8][4].setLabel("Y");
+    buttons[8][5].setLabel("O");
+    buttons[8][6].setLabel("U");
+    buttons[8][7].setLabel("");
+    buttons[8][8].setLabel("L");
+    buttons[8][9].setLabel("O");
+    buttons[8][10].setLabel("S");
+    buttons[8][11].setLabel("E");
 }
 public void displayWinningMessage()
 {
     //your code here
     fill(0);
-    text("You win!",200,200);
-    noLoop();
+    buttons[8][4].setLabel("Y");
+    buttons[8][5].setLabel("O");
+    buttons[8][6].setLabel("U");
+    buttons[8][7].setLabel("");
+    buttons[8][8].setLabel("W");
+    buttons[8][9].setLabel("I");
+    buttons[8][10].setLabel("N");
 }
 public boolean isValid(int r, int c)
 {
