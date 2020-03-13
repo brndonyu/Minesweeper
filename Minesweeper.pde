@@ -143,7 +143,6 @@ public class MSButton
         }
     if(mouseButton == LEFT){
         if(mines.contains(this)){
-            noLoop();
             displayLosingMessage();
         }
         /*
@@ -169,9 +168,8 @@ public class MSButton
     {    
         if (flagged)
             fill(0);
-        else if( clicked && mines.contains(this) ){
+        else if(clicked && mines.contains(this) ){
              fill(255,0,0);
-            isLost = true;
         }
         else if(clicked)
             fill( 200 );
