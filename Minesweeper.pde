@@ -136,6 +136,7 @@ public class MSButton
     }
 
     // called by manager
+    //check if flagged mines nearby is equal to countmines, if so, 3x3 mousepressed
     public void mousePressed() 
     {  
         clicked = true;
@@ -155,7 +156,6 @@ public class MSButton
         }
         else
         {
-        //https://github.com/nolanalexander1/Minesweeper/blob/master/Minesweeper.pde
             if(isValid(myRow-1,myCol) && buttons[myRow-1][myCol].clicked == false)
             {
                 buttons[myRow-1][myCol].mousePressed();
