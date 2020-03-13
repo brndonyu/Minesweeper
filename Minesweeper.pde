@@ -144,7 +144,7 @@ public class MSButton
         if(mines.contains(this)){
             displayLosingMessage();
         }
-        /*
+        
         if(isValid(myRow-1,myCol) && buttons[myRow-1][myCol].isClicked() == false)
         {
             buttons[myRow-1][myCol].mousePressed();
@@ -160,7 +160,7 @@ public class MSButton
         if(isValid(myRow+1,myCol) && buttons[myRow+1][myCol].isClicked() == false)
         {
             buttons[myRow+1][myCol].mousePressed();
-        }*/
+        }
     }
     }
     public void draw () 
