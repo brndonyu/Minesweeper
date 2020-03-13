@@ -2,7 +2,7 @@ import de.bezier.guido.*;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 public final static int NUM_ROWS = 16;
 public final static int NUM_COLS = 16;
-public final static int NUM_MINES = 40;
+public final static int NUM_MINES = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
 
@@ -58,7 +58,7 @@ public boolean isWon()
     //your code here
     for(int r = 0; r < NUM_ROWS; r++){
         for(int c = 0; c < NUM_COLS; c++){
-            if(mines.contains(buttons[r][c])){
+            if(mines.contains(buttons[r][c]) && !buttons[r][c].flagged == true){
                 return false;
             }
         }
@@ -69,6 +69,7 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    noLoop();
     fill(0);
     buttons[8][4].setLabel("Y");
     buttons[8][5].setLabel("O");
@@ -82,6 +83,7 @@ public void displayLosingMessage()
 public void displayWinningMessage()
 {
     //your code here
+    noLoop();
     fill(0);
     buttons[8][4].setLabel("Y");
     buttons[8][5].setLabel("O");
@@ -152,28 +154,36 @@ public class MSButton
             clicked = !clicked;
         }
     if(mouseButton == LEFT){
-        if(mines.contains(this)){
+        if(flagged == true){}
+        else if(mines.contains(this)){
             displayLosingMessage();
         }
-        
-        if(isValid(myRow-1,myCol) && buttons[myRow-1][myCol].isClicked() == false)
+        else if(countMines(myRow,myCol) > 0)
         {
-            buttons[myRow-1][myCol].mousePressed();
+            myLabel =  "" + countMines(myRow,myCol);
         }
-        if(isValid(myRow,myCol-1) && buttons[myRow][myCol-1].isClicked() == false)
+        else
         {
-            buttons[myRow][myCol-1].mousePressed();
-        }
-        if(isValid(myRow,myCol+1) && buttons[myRow][myCol+1].isClicked() == false)
-        {
-            buttons[myRow][myCol+1].mousePressed();
-        }
-        if(isValid(myRow+1,myCol) && buttons[myRow+1][myCol].isClicked() == false)
-        {
-            buttons[myRow+1][myCol].mousePressed();
+        //https://github.com/nolanalexander1/Minesweeper/blob/master/Minesweeper.pde
+            if(isValid(myRow-1,myCol) && buttons[myRow-1][myCol].clicked == false)
+            {
+                buttons[myRow-1][myCol].mousePressed();
+            }
+            if(isValid(myRow,myCol-1) && buttons[myRow][myCol-1].clicked == false)
+            {
+                buttons[myRow][myCol-1].mousePressed();
+            }
+            if(isValid(myRow,myCol+1) && buttons[myRow][myCol+1].clicked == false)
+            {
+                buttons[myRow][myCol+1].mousePressed();
+            }
+            if(isValid(myRow+1,myCol) && buttons[myRow+1][myCol].clicked == false)
+            {
+               buttons[myRow+1][myCol].mousePressed();
+            }
         }
     }
-    }
+}
     public void draw () 
     {    
         if (flagged)
