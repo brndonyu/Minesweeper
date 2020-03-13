@@ -73,7 +73,7 @@ public void displayLosingMessage()
     fill(0);
     text("You lose!",200,200);
     noLoop();
-    System.out.println("lose");
+    //System.out.println("lose");
 }
 public void displayWinningMessage()
 {
