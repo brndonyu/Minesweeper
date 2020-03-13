@@ -5,7 +5,6 @@ public final static int NUM_COLS = 16;
 public final static int NUM_MINES = 40;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
-public boolean isLost = false;
 
 void setup ()
 {
@@ -143,7 +142,6 @@ public class MSButton
         }
     if(mouseButton == LEFT){
         if(mines.contains(this)){
-            fill(255,0,0);
             displayLosingMessage();
         }
         /*
@@ -169,9 +167,8 @@ public class MSButton
     {    
         if (flagged)
             fill(0);
-        else if(clicked && mines.contains(this) ){
+        else if( clicked && mines.contains(this) ){
              fill(255,0,0);
-             displayLosingMessage();
         }
         else if(clicked)
             fill( 200 );
