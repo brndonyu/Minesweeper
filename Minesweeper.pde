@@ -1,8 +1,8 @@
 import de.bezier.guido.*;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
-public final static int NUM_ROWS = 16;
-public final static int NUM_COLS = 16;
-public final static int NUM_MINES = 20;
+public final static int NUM_ROWS = 25;
+public final static int NUM_COLS = 25;
+public final static int NUM_MINES = 99;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
 
@@ -23,16 +23,7 @@ void setup ()
     }
     
     setMines();
-    for(int r = 0; r < NUM_ROWS; r++)
-    {
-        for(int c = 0; c < NUM_COLS; c++){
-            int n = countMines(r,c);
-           if(n > 0 && !mines.contains(buttons[r][c]))
-            {
-                buttons[r][c].setLabel(n);
-            }
-        }
-    }
+   
 }
 
 public void setMines()
@@ -71,27 +62,27 @@ public void displayLosingMessage()
     //your code here
     noLoop();
     fill(0);
-    buttons[8][4].setLabel("Y");
-    buttons[8][5].setLabel("O");
-    buttons[8][6].setLabel("U");
-    buttons[8][7].setLabel("");
-    buttons[8][8].setLabel("L");
-    buttons[8][9].setLabel("O");
-    buttons[8][10].setLabel("S");
-    buttons[8][11].setLabel("E");
+    buttons[NUM_ROWS/2][NUM_COLS/2-3].setLabel("Y");
+    buttons[NUM_ROWS/2][NUM_COLS/2-2].setLabel("O");
+    buttons[NUM_ROWS/2][NUM_COLS/2-1].setLabel("U");
+    buttons[NUM_ROWS/2][NUM_COLS/2].setLabel("");
+    buttons[NUM_ROWS/2][NUM_COLS/2+1].setLabel("L");
+    buttons[NUM_ROWS/2][NUM_COLS/2+2].setLabel("O");
+    buttons[NUM_ROWS/2][NUM_COLS/2+3].setLabel("S");
+    buttons[NUM_ROWS/2][NUM_COLS/2+4].setLabel("E");
 }
 public void displayWinningMessage()
 {
     //your code here
     noLoop();
     fill(0);
-    buttons[8][4].setLabel("Y");
-    buttons[8][5].setLabel("O");
-    buttons[8][6].setLabel("U");
-    buttons[8][7].setLabel("");
-    buttons[8][8].setLabel("W");
-    buttons[8][9].setLabel("I");
-    buttons[8][10].setLabel("N");
+    buttons[NUM_ROWS/2][NUM_COLS/2-3].setLabel("Y");
+    buttons[NUM_ROWS/2][NUM_COLS/2-2].setLabel("O");
+    buttons[NUM_ROWS/2][NUM_COLS/2-1].setLabel("U");
+    buttons[NUM_ROWS/2][NUM_COLS/2].setLabel("");
+    buttons[NUM_ROWS/2][NUM_COLS/2+1].setLabel("W");
+    buttons[NUM_ROWS/2][NUM_COLS/2+2].setLabel("I");
+    buttons[NUM_ROWS/2][NUM_COLS/2+3].setLabel("N");
 }
 public boolean isValid(int r, int c)
 {
